@@ -53,15 +53,22 @@ namespace WinForms_interface
         }
         public double Markup { get; set; }
 
-        public GroceryGoods(string title, DateTime prodDate, DateTime expDate, DateTime purchaseDate, DateTime dateOfSale, double purchasePrice, double markup)
+        public GroceryGoods(string title, DateTime prodDate, DateTime expDate,
+            DateTime purchaseDate, double purchasePrice, double markup)
         {
             Title = title;
             ProdDate = prodDate;
             ExpDate = expDate;
             PurchaseDate = purchaseDate;
-            DateOfSale = dateOfSale;
             PurchasePrice = purchasePrice;
             Markup = markup;
+        }
+
+        public GroceryGoods(string title, DateTime prodDate, DateTime expDate,
+            DateTime purchaseDate, DateTime dateOfSale, double purchasePrice, double markup)
+            : this(title, prodDate, expDate, purchaseDate, purchasePrice, markup)
+        {
+            DateOfSale = dateOfSale;
         }
 
         public void CalcMarkup()
