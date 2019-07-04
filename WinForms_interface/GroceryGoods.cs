@@ -94,8 +94,6 @@ namespace WinForms_interface
                 Markup = PurchasePrice * 0.25 * -1;
             else if (proc < 20)
                 Markup = PurchasePrice * 0.1 * -1;
-
-            MessageBox.Show("Test");
         }
     }
 }
