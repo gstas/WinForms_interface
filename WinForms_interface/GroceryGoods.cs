@@ -10,6 +10,9 @@ namespace WinForms_interface
     {
         DateTime prodDate;
         DateTime expDate;
+        DateTime purchaseDate;
+        DateTime dateOfSale;
+        double purchasePrice;
 
         public string Title { get; set; }
         public DateTime ProdDate
@@ -25,13 +28,43 @@ namespace WinForms_interface
         public DateTime ExpDate
         {
             get => expDate;
-            set {
-                expDate = value > prodDate ? prodDate : value;
+            set
+            {
+                expDate = value < prodDate ? prodDate : value;
             }
         }
-        public DateTime PurchaseDate { get; set; }
-        public DateTime DateOfSale { get; set; }
-        public double PurchasePrice { get; set; }
+        public DateTime PurchaseDate
+        {
+            get => purchaseDate;
+            set
+            {
+                purchaseDate = value < prodDate ? prodDate : value;
+            }
+        }
+        public DateTime DateOfSale
+        {
+            get => dateOfSale;
+            set
+            {
+                dateOfSale = value > expDate ? expDate : value;
+            }
+        }
+        public double PurchasePrice
+        {
+            get => purchasePrice;
+            set => purchasePrice = value > 0 ? value : 0.01;
+        }
         public double Markup { get; set; }
+
+        public GroceryGoods(string title, DateTime prodDate, DateTime expDate, DateTime purchaseDate, DateTime dateOfSale, double purchasePrice, double markup)
+        {
+            Title = title;
+            ProdDate = prodDate;
+            ExpDate = expDate;
+            PurchaseDate = purchaseDate;
+            DateOfSale = dateOfSale;
+            PurchasePrice = purchasePrice;
+            Markup = markup;
+        }
     }
 }
