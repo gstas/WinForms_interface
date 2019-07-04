@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WinForms_interface
 {
@@ -65,6 +62,33 @@ namespace WinForms_interface
             DateOfSale = dateOfSale;
             PurchasePrice = purchasePrice;
             Markup = markup;
+        }
+
+        public void CalcMarkup()
+        {
+            /*
+            если до конца срока годности осталось до 20 % от общего срока годности, 
+            то скидка от закупочной цены должна составлять 10 %,
+            
+            если до конца срока годности осталось до 10 % от общего срока годности, 
+            то скидка от закупочной цены должна составлять 25 %,
+            
+            в последний день срока годности скидка от закупочной цены должна составлять 50 %
+            */
+
+            double summaryExpDays = (ExpDate - ProdDate).TotalDays;
+            double restOfExp = (ExpDate - DateTime.Today).TotalDays;
+
+            double proc = restOfExp * 100 / summaryExpDays;
+
+            if (restOfExp <= 1)
+                Markup = PurchasePrice * 0.5 * -1;
+            else if (proc < 10)
+                Markup = PurchasePrice * 0.25 * -1;
+            else if (proc < 20)
+                Markup = PurchasePrice * 0.1 * -1;
+
+            MessageBox.Show("Test");
         }
     }
 }
