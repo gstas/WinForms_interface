@@ -95,5 +95,11 @@ namespace WinForms_interface
             else if (proc < 20)
                 Markup = PurchasePrice * 0.1 * -1;
         }
+
+        public override string ToString()
+        {
+            return $"{Title}, ProdDate: {ProdDate.ToShortDateString()}, ExpDate:{ExpDate.ToShortDateString()}\n"+
+                $"PurchDate: {PurchaseDate.ToShortDateString()}, PurchasePrice: {PurchasePrice}, Markup: {Markup}";
+        }
     }
 }
