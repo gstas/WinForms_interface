@@ -63,5 +63,10 @@ namespace WinForms_interface
             store.StoreGoods.Add(newGoods);
             dataGridView1.Rows.Add(1);
         }
+
+        private void CheckBoxDateOfSale_CheckedChanged(object sender, EventArgs e)
+        {
+            dateTimePickerDateOfSale.Visible = !dateTimePickerDateOfSale.Visible;
+        }
     }
 }
