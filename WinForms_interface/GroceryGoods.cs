@@ -11,6 +11,8 @@ namespace WinForms_interface
         DateTime dateOfSale;
         double purchasePrice;
 
+        delegate void DelMarkup(double procent);
+
         public string Title { get; set; }
         public DateTime ProdDate
         {
@@ -87,14 +89,24 @@ namespace WinForms_interface
             double restOfExp = (ExpDate - DateTime.Today).TotalDays;
 
             double proc = restOfExp * 100 / summaryExpDays;
+            
+            DelMarkup del = MarkupCalculate;
 
             if (restOfExp <= 1)
-                Markup = PurchasePrice * 0.5 * -1;
+                //Markup = PurchasePrice * 0.5 * -1;
+                del(0.5);
             else if (proc < 10)
-                Markup = PurchasePrice * 0.25 * -1;
+                //Markup = PurchasePrice * 0.25 * -1;
+                del(0.25);
             else if (proc < 20)
-                Markup = PurchasePrice * 0.1 * -1;
+                //Markup = PurchasePrice * 0.1 * -1;
+                del(0.1);
         }
+
+        private void MarkupCalculate(double procent) {
+            Markup = PurchasePrice * procent * -1;
+        }
+       
 
         public override string ToString()
         {
