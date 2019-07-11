@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateOfSale = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Markup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblPurchasePrice = new System.Windows.Forms.Label();
@@ -57,6 +50,14 @@
             this.btnCalc = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnExpired = new System.Windows.Forms.Button();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateOfSale = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Markup = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Summary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -73,57 +74,16 @@
             this.PurchaseDate,
             this.DateOfSale,
             this.PurchasePrice,
-            this.Markup});
+            this.Markup,
+            this.Summary});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(827, 158);
+            this.dataGridView1.Size = new System.Drawing.Size(865, 158);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DataGridView1_CellPainting);
-            // 
-            // Title
-            // 
-            this.Title.HeaderText = "Title";
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
-            // 
-            // ProdDate
-            // 
-            this.ProdDate.HeaderText = "ProdDate";
-            this.ProdDate.Name = "ProdDate";
-            this.ProdDate.ReadOnly = true;
-            // 
-            // ExpDate
-            // 
-            this.ExpDate.HeaderText = "ExpDate";
-            this.ExpDate.Name = "ExpDate";
-            this.ExpDate.ReadOnly = true;
-            // 
-            // PurchaseDate
-            // 
-            this.PurchaseDate.HeaderText = "PurchaseDate";
-            this.PurchaseDate.Name = "PurchaseDate";
-            this.PurchaseDate.ReadOnly = true;
-            // 
-            // DateOfSale
-            // 
-            this.DateOfSale.HeaderText = "DateOfSale";
-            this.DateOfSale.Name = "DateOfSale";
-            this.DateOfSale.ReadOnly = true;
-            // 
-            // PurchasePrice
-            // 
-            this.PurchasePrice.HeaderText = "PurchasePrice, $";
-            this.PurchasePrice.Name = "PurchasePrice";
-            this.PurchasePrice.ReadOnly = true;
-            // 
-            // Markup
-            // 
-            this.Markup.HeaderText = "Markup, $";
-            this.Markup.Name = "Markup";
-            this.Markup.ReadOnly = true;
             // 
             // textBoxTitle
             // 
@@ -329,11 +289,59 @@
             this.btnExpired.UseVisualStyleBackColor = true;
             this.btnExpired.Click += new System.EventHandler(this.BtnExpired_Click);
             // 
+            // Title
+            // 
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            // 
+            // ProdDate
+            // 
+            this.ProdDate.HeaderText = "ProdDate";
+            this.ProdDate.Name = "ProdDate";
+            this.ProdDate.ReadOnly = true;
+            // 
+            // ExpDate
+            // 
+            this.ExpDate.HeaderText = "ExpDate";
+            this.ExpDate.Name = "ExpDate";
+            this.ExpDate.ReadOnly = true;
+            // 
+            // PurchaseDate
+            // 
+            this.PurchaseDate.HeaderText = "PurchaseDate";
+            this.PurchaseDate.Name = "PurchaseDate";
+            this.PurchaseDate.ReadOnly = true;
+            // 
+            // DateOfSale
+            // 
+            this.DateOfSale.HeaderText = "DateOfSale";
+            this.DateOfSale.Name = "DateOfSale";
+            this.DateOfSale.ReadOnly = true;
+            // 
+            // PurchasePrice
+            // 
+            this.PurchasePrice.HeaderText = "PurchasePrice, $";
+            this.PurchasePrice.Name = "PurchasePrice";
+            this.PurchasePrice.ReadOnly = true;
+            // 
+            // Markup
+            // 
+            this.Markup.HeaderText = "Markup, $";
+            this.Markup.Name = "Markup";
+            this.Markup.ReadOnly = true;
+            // 
+            // Summary
+            // 
+            this.Summary.HeaderText = "Summary, $";
+            this.Summary.Name = "Summary";
+            this.Summary.ReadOnly = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 377);
+            this.ClientSize = new System.Drawing.Size(865, 377);
             this.Controls.Add(this.btnExpired);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.panel1);
@@ -373,6 +381,9 @@
         private System.Windows.Forms.CheckBox checkBoxDateOfSale;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnCalc;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnExpired;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProdDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExpDate;
@@ -380,9 +391,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DateOfSale;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchasePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Markup;
-        private System.Windows.Forms.Button btnCalc;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnExpired;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Summary;
     }
 }
 

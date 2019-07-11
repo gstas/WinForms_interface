@@ -15,6 +15,8 @@ namespace WinForms_interface
         Store store;
         int selectedRow;
 
+        Func<double, double, double> Summ = GroceryGoods.SummaryCalculate;
+
         public MainForm()
         {
             InitializeComponent();
@@ -46,6 +48,8 @@ namespace WinForms_interface
                 dataGridView1.Rows[row].Cells[4].Value = dos > DateTime.MinValue ? dos.ToShortDateString() : "";
                 dataGridView1.Rows[row].Cells[5].Value = ((GroceryGoods)store.StoreGoods[row]).PurchasePrice;
                 dataGridView1.Rows[row].Cells[6].Value = ((GroceryGoods)store.StoreGoods[row]).Markup;
+
+                dataGridView1.Rows[row].Cells[7].Value = Summ(((GroceryGoods)store.StoreGoods[row]).PurchasePrice, ((GroceryGoods)store.StoreGoods[row]).Markup);
             }
         }
 

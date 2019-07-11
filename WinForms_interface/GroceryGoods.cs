@@ -107,6 +107,10 @@ namespace WinForms_interface
             Markup = PurchasePrice * procent * -1;
         }
        
+        public static double SummaryCalculate(double pruchasePrice, double markup)
+        {
+            return pruchasePrice + markup;
+        }
 
         public override string ToString()
         {
