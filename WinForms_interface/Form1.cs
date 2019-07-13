@@ -33,6 +33,13 @@ namespace WinForms_interface
 
             dataGridView1.Rows.Add(store.StoreGoods.Count);
 
+            if (store.StoreGoods.Count > 0)
+            {
+                selectedRow = 0;
+                FillForm();
+            }
+
+            comboBoxSortOrder.DataSource = Enum.GetValues(typeof(StoreSortMode));
         }
 
         private void DataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -179,6 +186,14 @@ namespace WinForms_interface
             {
                 dataGridView1.Rows[i].Cells[2].Style.BackColor = Color.LightPink;
             }
+        }
+
+        private void BtnSort_Click(object sender, EventArgs e)
+        {
+            store.SortByExpDate((StoreSortMode)comboBoxSortOrder.SelectedItem);
+            
+            dataGridView1.Update();
+            dataGridView1.Refresh();
         }
     }
 }

@@ -28,7 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateOfSale = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Markup = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Summary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblPurchasePrice = new System.Windows.Forms.Label();
@@ -50,16 +59,15 @@
             this.btnCalc = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnExpired = new System.Windows.Forms.Button();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateOfSale = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchasePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Markup = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Summary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSort = new System.Windows.Forms.Button();
+            this.groupBoxSortByDate = new System.Windows.Forms.GroupBox();
+            this.comboBoxSortOrder = new System.Windows.Forms.ComboBox();
+            this.lblSort = new System.Windows.Forms.Label();
+            this.storeSortModeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBoxSortByDate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.storeSortModeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -84,6 +92,54 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DataGridView1_CellPainting);
+            // 
+            // Title
+            // 
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            // 
+            // ProdDate
+            // 
+            this.ProdDate.HeaderText = "ProdDate";
+            this.ProdDate.Name = "ProdDate";
+            this.ProdDate.ReadOnly = true;
+            // 
+            // ExpDate
+            // 
+            this.ExpDate.HeaderText = "ExpDate";
+            this.ExpDate.Name = "ExpDate";
+            this.ExpDate.ReadOnly = true;
+            // 
+            // PurchaseDate
+            // 
+            this.PurchaseDate.HeaderText = "PurchaseDate";
+            this.PurchaseDate.Name = "PurchaseDate";
+            this.PurchaseDate.ReadOnly = true;
+            // 
+            // DateOfSale
+            // 
+            this.DateOfSale.HeaderText = "DateOfSale";
+            this.DateOfSale.Name = "DateOfSale";
+            this.DateOfSale.ReadOnly = true;
+            // 
+            // PurchasePrice
+            // 
+            this.PurchasePrice.HeaderText = "PurchasePrice, $";
+            this.PurchasePrice.Name = "PurchasePrice";
+            this.PurchasePrice.ReadOnly = true;
+            // 
+            // Markup
+            // 
+            this.Markup.HeaderText = "Markup, $";
+            this.Markup.Name = "Markup";
+            this.Markup.ReadOnly = true;
+            // 
+            // Summary
+            // 
+            this.Summary.HeaderText = "Summary, $";
+            this.Summary.Name = "Summary";
+            this.Summary.ReadOnly = true;
             // 
             // textBoxTitle
             // 
@@ -281,7 +337,7 @@
             // 
             // btnExpired
             // 
-            this.btnExpired.Location = new System.Drawing.Point(408, 330);
+            this.btnExpired.Location = new System.Drawing.Point(408, 282);
             this.btnExpired.Name = "btnExpired";
             this.btnExpired.Size = new System.Drawing.Size(99, 23);
             this.btnExpired.TabIndex = 20;
@@ -289,59 +345,51 @@
             this.btnExpired.UseVisualStyleBackColor = true;
             this.btnExpired.Click += new System.EventHandler(this.BtnExpired_Click);
             // 
-            // Title
+            // btnSort
             // 
-            this.Title.HeaderText = "Title";
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
+            this.btnSort.Location = new System.Drawing.Point(33, 52);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(98, 23);
+            this.btnSort.TabIndex = 21;
+            this.btnSort.Text = "Sort by ExpDate";
+            this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.BtnSort_Click);
             // 
-            // ProdDate
+            // groupBoxSortByDate
             // 
-            this.ProdDate.HeaderText = "ProdDate";
-            this.ProdDate.Name = "ProdDate";
-            this.ProdDate.ReadOnly = true;
+            this.groupBoxSortByDate.Controls.Add(this.comboBoxSortOrder);
+            this.groupBoxSortByDate.Controls.Add(this.lblSort);
+            this.groupBoxSortByDate.Controls.Add(this.btnSort);
+            this.groupBoxSortByDate.Location = new System.Drawing.Point(553, 164);
+            this.groupBoxSortByDate.Name = "groupBoxSortByDate";
+            this.groupBoxSortByDate.Size = new System.Drawing.Size(165, 81);
+            this.groupBoxSortByDate.TabIndex = 22;
+            this.groupBoxSortByDate.TabStop = false;
+            this.groupBoxSortByDate.Text = "Sort by ExpDate";
             // 
-            // ExpDate
+            // comboBoxSortOrder
             // 
-            this.ExpDate.HeaderText = "ExpDate";
-            this.ExpDate.Name = "ExpDate";
-            this.ExpDate.ReadOnly = true;
+            this.comboBoxSortOrder.FormattingEnabled = true;
+            this.comboBoxSortOrder.Location = new System.Drawing.Point(69, 19);
+            this.comboBoxSortOrder.Name = "comboBoxSortOrder";
+            this.comboBoxSortOrder.Size = new System.Drawing.Size(84, 21);
+            this.comboBoxSortOrder.TabIndex = 23;
             // 
-            // PurchaseDate
+            // lblSort
             // 
-            this.PurchaseDate.HeaderText = "PurchaseDate";
-            this.PurchaseDate.Name = "PurchaseDate";
-            this.PurchaseDate.ReadOnly = true;
-            // 
-            // DateOfSale
-            // 
-            this.DateOfSale.HeaderText = "DateOfSale";
-            this.DateOfSale.Name = "DateOfSale";
-            this.DateOfSale.ReadOnly = true;
-            // 
-            // PurchasePrice
-            // 
-            this.PurchasePrice.HeaderText = "PurchasePrice, $";
-            this.PurchasePrice.Name = "PurchasePrice";
-            this.PurchasePrice.ReadOnly = true;
-            // 
-            // Markup
-            // 
-            this.Markup.HeaderText = "Markup, $";
-            this.Markup.Name = "Markup";
-            this.Markup.ReadOnly = true;
-            // 
-            // Summary
-            // 
-            this.Summary.HeaderText = "Summary, $";
-            this.Summary.Name = "Summary";
-            this.Summary.ReadOnly = true;
+            this.lblSort.AutoSize = true;
+            this.lblSort.Location = new System.Drawing.Point(7, 22);
+            this.lblSort.Name = "lblSort";
+            this.lblSort.Size = new System.Drawing.Size(56, 13);
+            this.lblSort.TabIndex = 22;
+            this.lblSort.Text = "Sort order:";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(865, 377);
+            this.Controls.Add(this.groupBoxSortByDate);
             this.Controls.Add(this.btnExpired);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.panel1);
@@ -356,6 +404,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBoxSortByDate.ResumeLayout(false);
+            this.groupBoxSortByDate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.storeSortModeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -392,6 +443,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchasePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Markup;
         private System.Windows.Forms.DataGridViewTextBoxColumn Summary;
+        private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.GroupBox groupBoxSortByDate;
+        private System.Windows.Forms.ComboBox comboBoxSortOrder;
+        private System.Windows.Forms.BindingSource storeSortModeBindingSource;
+        private System.Windows.Forms.Label lblSort;
     }
 }
 
