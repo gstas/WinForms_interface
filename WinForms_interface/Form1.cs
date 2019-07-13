@@ -26,10 +26,12 @@ namespace WinForms_interface
         private void MainForm_Load(object sender, EventArgs e)
         {
             GroceryGoods bread = new GroceryGoods("Bread", new DateTime(2019, 7, 3), new DateTime(2019, 7, 6), new DateTime(2019, 7, 4), 15, 5);
-            GroceryGoods sausage = new GroceryGoods("Sausage", new DateTime(2019, 7, 3), new DateTime(2019, 9, 6), new DateTime(2019, 7, 4), 50, 25);
-            
+            GroceryGoods sausage = new GroceryGoods("Sausage", new DateTime(2019, 7, 3), new DateTime(2019, 9, 6), new DateTime(2019, 7, 4), 90, 25);
+            GroceryGoods beer = new GroceryGoods("Beer", new DateTime(2019, 7, 3), new DateTime(2020, 9, 6), new DateTime(2019, 7, 4), 50, 5);
+
             store.StoreGoods.Add(bread);
             store.StoreGoods.Add(sausage);
+            store.StoreGoods.Add(beer);
 
             dataGridView1.Rows.Add(store.StoreGoods.Count);
 

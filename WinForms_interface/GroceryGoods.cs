@@ -55,6 +55,8 @@ namespace WinForms_interface
         }
         public double Markup { get; set; }
 
+        public GroceryGoods() { }
+
         public GroceryGoods(string title, DateTime prodDate, DateTime expDate,
             DateTime purchaseDate, double purchasePrice, double markup)
         {

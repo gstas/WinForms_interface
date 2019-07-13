@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace WinForms_interface
@@ -29,22 +30,19 @@ namespace WinForms_interface
             {
                 if (((GroceryGoods)storeGoods[i]).ExpDate < DateTime.Today)
                 {
-                    Array.Resize<int>(ref result, result.Length+1);
-                    result[result.Length-1] = i;
+                    Array.Resize<int>(ref result, result.Length + 1);
+                    result[result.Length - 1] = i;
                 }
             }
             return result;
         }
 
-     
 
-        
+
+
         public void SortByExpDate(StoreSortMode mode)
         {
-            uint numOfReplacements = 1;
-            uint cnt = (uint)storeGoods.Count;
-
-            ArrayList tmp = new ArrayList();
+            uint numOfReplacements = 1, cnt = (uint)storeGoods.Count;
             ArrayList sorted = (ArrayList)storeGoods.Clone();
 
             DelSortByExpDate sort = delegate (GroceryGoods g1, GroceryGoods g2)
@@ -57,34 +55,26 @@ namespace WinForms_interface
                     return 0;
             };
 
-
-            while (numOfReplacements > 0) {
-                tmp = new ArrayList();
+            GroceryGoods gg1, gg2;
+            while (numOfReplacements > 0)
+            {
                 numOfReplacements = 0;
-                
-                for (int i = 0; i < cnt-1; i++)
+                for (int i = 0; i < cnt - 1; i++)
                 {
-                    GroceryGoods g1 = (GroceryGoods)sorted[i];
-                    GroceryGoods g2 = (GroceryGoods)sorted[i+1];
-                    
-                    if (sort(g1, g2) == (sbyte)mode)
+                    gg1 = (GroceryGoods)sorted[i];
+                    gg2 = (GroceryGoods)sorted[i + 1];
+
+                    if (sort(gg1, gg2) == (sbyte)mode)
                     {
-                        tmp.Add(g2);
-                        tmp.Add(g1);
+                        sorted[i] = gg2;
+                        sorted[i + 1] = gg1;
                         numOfReplacements++;
-                    } else
-                    {
-                        tmp.Add(g1);
-                        tmp.Add(g2);
                     }
                 }
-
-                sorted = (ArrayList)tmp.Clone();
-                tmp = null;
             }
-
             storeGoods = (ArrayList)sorted.Clone();
             sorted = null;
         }
+
     }
 }
