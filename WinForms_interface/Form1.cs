@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace WinForms_interface
 {
     public partial class MainForm : Form
     {
+        const string DATAPATH = @"data.xml";
         Store store;
         int selectedRow;
 
@@ -25,13 +22,24 @@ namespace WinForms_interface
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            GroceryGoods bread = new GroceryGoods("Bread", new DateTime(2019, 7, 3), new DateTime(2019, 7, 6), new DateTime(2019, 7, 4), 15, 5);
-            GroceryGoods sausage = new GroceryGoods("Sausage", new DateTime(2019, 7, 3), new DateTime(2019, 9, 6), new DateTime(2019, 7, 4), 90, 25);
-            GroceryGoods beer = new GroceryGoods("Beer", new DateTime(2019, 7, 3), new DateTime(2020, 9, 6), new DateTime(2019, 7, 4), 50, 5);
+            FileInfo fileInfo = new FileInfo(DATAPATH);
+            if (fileInfo.Exists)
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Store));
+                using (FileStream fs = new FileStream(DATAPATH, FileMode.Open, FileAccess.Read))
+                {
+                    store = (Store)serializer.Deserialize(fs);
+                }
+            } else
+            {                
+                GroceryGoods bread = new GroceryGoods("Bread", new DateTime(2019, 7, 3), new DateTime(2019, 7, 6), new DateTime(2019, 7, 4), 15, 5);
+                GroceryGoods sausage = new GroceryGoods("Sausage", new DateTime(2019, 7, 3), new DateTime(2019, 9, 6), new DateTime(2019, 7, 4), 90, 25);
+                GroceryGoods beer = new GroceryGoods("Beer", new DateTime(2019, 7, 3), new DateTime(2020, 9, 6), new DateTime(2019, 7, 4), 50, 5);
 
-            store.StoreGoods.Add(bread);
-            store.StoreGoods.Add(sausage);
-            store.StoreGoods.Add(beer);
+                store.StoreGoods.Add(bread);
+                store.StoreGoods.Add(sausage);
+                store.StoreGoods.Add(beer);
+            }
 
             dataGridView1.Rows.Add(store.StoreGoods.Count);
 
@@ -197,5 +205,19 @@ namespace WinForms_interface
             dataGridView1.Update();
             dataGridView1.Refresh();
         }
+
+       
+
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Store));
+            using (FileStream fs = new FileStream(DATAPATH, FileMode.OpenOrCreate, FileAccess.Write))
+            {
+                serializer.Serialize(fs, store);
+                fs.Close();
+            }
+        }
+           
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace WinForms_interface
 {
@@ -11,7 +10,8 @@ namespace WinForms_interface
         Desc = -1
     }
 
-    class Store
+    [Serializable, XmlInclude(typeof(GroceryGoods))]
+    public class Store
     {
         ArrayList storeGoods;
         delegate sbyte DelSortByExpDate(GroceryGoods g1, GroceryGoods g2);

@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace WinForms_interface
 {
-    class GroceryGoods : IProduct, IGoods
+    [Serializable]
+    public class GroceryGoods : IProduct, IGoods
     {
         DateTime prodDate;
         DateTime expDate;

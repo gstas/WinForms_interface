@@ -384,6 +384,10 @@
             this.lblSort.TabIndex = 22;
             this.lblSort.Text = "Sort order:";
             // 
+            // storeSortModeBindingSource
+            // 
+
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,6 +404,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Interfaces";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
