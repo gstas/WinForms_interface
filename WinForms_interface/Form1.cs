@@ -30,8 +30,9 @@ namespace WinForms_interface
                 {
                     store = (Store)serializer.Deserialize(fs);
                 }
-            } else
-            {                
+            }
+            else
+            {
                 GroceryGoods bread = new GroceryGoods("Bread", new DateTime(2019, 7, 3), new DateTime(2019, 7, 6), new DateTime(2019, 7, 4), 15, 5);
                 GroceryGoods sausage = new GroceryGoods("Sausage", new DateTime(2019, 7, 3), new DateTime(2019, 9, 6), new DateTime(2019, 7, 4), 90, 25);
                 GroceryGoods beer = new GroceryGoods("Beer", new DateTime(2019, 7, 3), new DateTime(2020, 9, 6), new DateTime(2019, 7, 4), 50, 5);
@@ -188,26 +189,19 @@ namespace WinForms_interface
         private void BtnExpired_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < store.StoreGoods.Count; i++)
-            {
                 dataGridView1.Rows[i].Cells[2].Style.BackColor = Color.White;
-            }
 
             foreach (int i in store.GetExpired())
-            {
                 dataGridView1.Rows[i].Cells[2].Style.BackColor = Color.LightPink;
-            }
         }
 
         private void BtnSort_Click(object sender, EventArgs e)
         {
             store.SortByExpDate((StoreSortMode)comboBoxSortOrder.SelectedItem);
-            
+
             dataGridView1.Update();
             dataGridView1.Refresh();
         }
-
-       
-
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -218,6 +212,6 @@ namespace WinForms_interface
                 fs.Close();
             }
         }
-           
+
     }
 }

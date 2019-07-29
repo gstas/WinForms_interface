@@ -16,7 +16,7 @@ namespace WinForms_interface
         ArrayList storeGoods;
         delegate sbyte DelSortByExpDate(GroceryGoods g1, GroceryGoods g2);
 
-       [XmlArrayItem("GroceryGoods", typeof(GroceryGoods))]
+        [XmlArrayItem("GroceryGoods", typeof(GroceryGoods))]
         public ArrayList StoreGoods { get => storeGoods; set => storeGoods = value; }
 
         public Store()
@@ -37,9 +37,6 @@ namespace WinForms_interface
             }
             return result;
         }
-
-
-
 
         public void SortByExpDate(StoreSortMode mode)
         {
