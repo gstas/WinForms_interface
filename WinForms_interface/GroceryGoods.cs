@@ -2,7 +2,6 @@
 
 namespace WinForms_interface
 {
-    [Serializable]
     public class GroceryGoods : IProduct, IGoods
     {
         DateTime prodDate;
